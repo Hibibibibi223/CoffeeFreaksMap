@@ -17,10 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('region_id')->constrained('regions')->onDelete('cascade');
-/*             $table->decimal('latitude', 10, 8)->nullable();
-            $table->decimal('longitude', 11, 8)->nullable();
-            住所にする */
-            
+            $table->text('address');
             $table->timestamps();
             $table->softDeletes();
         });
