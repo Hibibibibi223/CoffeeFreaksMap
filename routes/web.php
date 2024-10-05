@@ -28,4 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    // 認証済みかつメール確認済みのユーザーのみアクセス可能なルート
+});
+
 require __DIR__.'/auth.php';
