@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -28,8 +30,28 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    // 認証済みかつメール確認済みのユーザーのみアクセス可能なルート
+Route::controller(PostController::class)->middleware(['auth'])->group(function () {
+    // 認証済みのユーザーのみアクセス可能なルート
+    // middleware(['auth', 'verified'])->　　にするとかつメール確認済みになる
+    Route::get('/posts', 'index')->name('posts.postindex');
+/*     Route::post('/posts', 'store')->name('store'); */
+    Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts/{post}', 'show')->name('show');
+/*     Route::put('/posts/{post}', 'update')->name('update');
+    Route::delete('/posts/{post}', 'delete')->name('delete');
+    Route::get('/posts/{post}/edit', 'edit')->name('edit'); */
+});
+
+Route::controller(HomeController::class)->middleware(['auth'])->group(function () {
+    // 認証済みのユーザーのみアクセス可能なルート
+    // middleware(['auth', 'verified'])->　　にするとかつメール確認済みになる
+    Route::get('/', 'index')->name('index');
+/*     Route::post('/posts', 'store')->name('store'); */
+/*     Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts/{post}', 'show')->name('show'); */
+/*     Route::put('/posts/{post}', 'update')->name('update');
+    Route::delete('/posts/{post}', 'delete')->name('delete');
+    Route::get('/posts/{post}/edit', 'edit')->name('edit'); */
 });
 
 require __DIR__.'/auth.php';

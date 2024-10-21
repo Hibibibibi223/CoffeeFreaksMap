@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
+            'role' => 'admin',   
         ]);
 
         // テスト用の一般ユーザーの作成
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'email' => 'test@example.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
+            'role' => 'user',   
         ]);
     }
 }

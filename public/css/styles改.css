@@ -1,0 +1,57 @@
+.container  {
+    max-width: 1200px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+
+/* —————— ヘッダー ——————————————— */
+.main_header {
+    background: #4A2C2A;
+}
+.main-header > .container {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* —————— ロゴ ——————————————— */
+.area_logo_header {
+    display: block;
+    width: 500px;
+}
+.area_logo_header .logo {
+
+}
+
+.char_logo {
+    font-size: 50px;
+    color: #D4B59D;
+    padding: 0%;
+    text-decoration: underline;
+    width: 500px;
+}
+
+/* —————— ナビゲーション ——————————————— */
+.area_nav_header {
+    margin-left: auto;
+    width: 400px;
+}
+
+/* —————— リストナビ ——————————————— */
+.list_nav_header {
+    display: flex;
+    align-items: center;
+}
+.list_nav_header > li + li {
+    margin-left: 30px;
+}
+.list_nav_header .menu_list_nav {
+    font: 500 15px/1em;
+    color: #D4B59D;
+}
+
+/* —————— ボディ ——————————————— */
+body {
+    background-color: #ccc;
+    
+}
